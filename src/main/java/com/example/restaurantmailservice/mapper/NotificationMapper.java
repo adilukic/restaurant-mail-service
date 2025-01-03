@@ -10,7 +10,7 @@ public class NotificationMapper {
 
 
         Notification notification = new Notification();
-        notification.setRecipientEmail(notificationDto.getRecipientEmail());
+        notification.setRecipient(notificationDto.getRecipientEmail());
         notification.setSubject(notificationDto.getSubject());
         notification.setBody(notificationDto.getBody());
         notification.setNotificationType(notificationDto.getNotificationType());
@@ -21,7 +21,7 @@ public class NotificationMapper {
     }
     public NotificationDto notificationToNotificationDto(Notification notification){
         NotificationDto notificationDto = new NotificationDto();
-        notificationDto.setRecipientEmail(notification.getRecipientEmail());
+        notificationDto.setRecipientEmail(notification.getRecipient());
         notificationDto.setSubject(notification.getSubject());
         notificationDto.setBody(notification.getBody());
         notificationDto.setNotificationType(notification.getNotificationType());

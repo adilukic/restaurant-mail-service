@@ -1,4 +1,4 @@
-package com.example.restaurantmailservice;
+package com.example.restaurantmailservice.configuration;
 
 
 import io.swagger.v3.oas.models.OpenAPI;
@@ -12,9 +12,9 @@ public class SwaggerConfiguration {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Restaurant User Service API")
+                        .title("Restaurant Notification Service API")
                         .version("1.0.0")
-                        .description("API documentation for Restaurant User Service"));
+                        .description("API documentation for Restaurant Notification Service"));
     }
 }
 

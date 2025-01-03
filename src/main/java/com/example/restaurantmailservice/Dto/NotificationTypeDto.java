@@ -2,8 +2,8 @@ package com.example.restaurantmailservice.Dto;
 
 public class NotificationTypeDto {
     private String name;
-    private String description;
-    private boolean active;
+    private String subject;
+    private String body;
 
     public NotificationTypeDto() {
     }
@@ -16,19 +16,20 @@ public class NotificationTypeDto {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
-    public boolean isActive() {
-        return active;
+    public String getBody() {
+        return body;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setBody(String body) {
+        this.body = body;
     }
+
 }

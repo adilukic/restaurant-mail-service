@@ -1,9 +1,6 @@
 package com.example.restaurantmailservice.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -12,14 +9,33 @@ public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String recipientEmail;
+    private String recipient;
     private String subject;
     private String body;
-    private NotificationTypeEnum notificationType;
-    private LocalDateTime timestamp;
+    private String status;
+    @ManyToOne
+    @JoinColumn(name = "type_id")
+    private NotificationType notificationType;
+    private LocalDateTime timestamp = LocalDateTime.now();
     private boolean archived;
 
     public Notification() {
+    }
+
+    public NotificationType getNotificationType() {
+        return notificationType;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setNotificationType(NotificationType notificationType) {
+        this.notificationType = notificationType;
     }
 
     public Long getId() {
@@ -30,12 +46,12 @@ public class Notification {
         this.id = id;
     }
 
-    public String getRecipientEmail() {
-        return recipientEmail;
+    public String getRecipient() {
+        return recipient;
     }
 
-    public void setRecipientEmail(String recipientEmail) {
-        this.recipientEmail = recipientEmail;
+    public void setRecipient(String recipient) {
+        this.recipient = recipient;
     }
 
     public String getSubject() {
@@ -52,14 +68,6 @@ public class Notification {
 
     public void setBody(String body) {
         this.body = body;
-    }
-
-    public NotificationTypeEnum getNotificationType() {
-        return notificationType;
-    }
-
-    public void setNotificationType(NotificationTypeEnum notificationType) {
-        this.notificationType = notificationType;
     }
 
     public LocalDateTime getTimestamp() {

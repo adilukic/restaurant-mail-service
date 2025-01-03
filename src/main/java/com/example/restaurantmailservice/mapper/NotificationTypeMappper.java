@@ -10,19 +10,18 @@ public class NotificationTypeMappper {
 
         NotificationType notificationType = new NotificationType();
         notificationType.setName(notificationTypeDto.getName());
-        notificationType.setDescription(notificationTypeDto.getDescription());
-        notificationType.setActive(notificationTypeDto.isActive());
+        notificationType.setBody(notificationTypeDto.getBody());
+        notificationType.setSubject(notificationTypeDto.getSubject());
 
         return notificationType;
     }
 
     public NotificationTypeDto notificationTypeToNotificationTypeDto(NotificationType notificationType) {
 
-
         NotificationTypeDto notificationTypeDto = new NotificationTypeDto();
         notificationTypeDto.setName(notificationType.getName());
-        notificationTypeDto.setDescription(notificationType.getDescription());
-        notificationTypeDto.setActive(notificationType.isActive());
+        notificationTypeDto.setBody(notificationType.getBody());
+        notificationTypeDto.setSubject(notificationType.getSubject());
 
         return notificationTypeDto;
     }

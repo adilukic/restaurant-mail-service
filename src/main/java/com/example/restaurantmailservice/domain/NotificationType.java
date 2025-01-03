@@ -11,18 +11,12 @@ public class NotificationType {
     @Column(unique = true)
     private String name;
     @Column
-    private String description;
-    private boolean active = true;
+    private String subject;
+    @Column
+    private String body;
+
 
     public NotificationType() {
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
     }
 
     public Long getId() {
@@ -41,11 +35,19 @@ public class NotificationType {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 }
