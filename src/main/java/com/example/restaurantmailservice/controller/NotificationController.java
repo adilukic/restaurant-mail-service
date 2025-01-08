@@ -7,6 +7,7 @@ import com.example.restaurantmailservice.domain.Notification;
 import com.example.restaurantmailservice.domain.NotificationType;
 import com.example.restaurantmailservice.repo.NotificationRepository;
 import com.example.restaurantmailservice.repo.NotificationTypeRepository;
+import com.example.restaurantmailservice.security.CheckSecurity;
 import com.example.restaurantmailservice.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,7 @@ public class NotificationController {
     @Autowired
     private NotificationRepository notificationRepository;
 
+    @CheckSecurity(roles = "")
     @PostMapping("/send")
     public String sendNotification(@RequestBody NotificationRequestDto request) {
         notificationService.sendNotification(request.getType(), request.getRecipient(), request.getPlaceholders());
