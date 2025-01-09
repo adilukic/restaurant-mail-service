@@ -22,6 +22,16 @@ public class Notification {
     public Notification() {
     }
 
+    public Notification(String recipient, String subject, String body, String status, NotificationType notificationType, LocalDateTime timestamp, boolean archived) {
+        this.recipient = recipient;
+        this.subject = subject;
+        this.body = body;
+        this.status = status;
+        this.notificationType = notificationType;
+        this.timestamp = timestamp;
+        this.archived = archived;
+    }
+
     public NotificationType getNotificationType() {
         return notificationType;
     }

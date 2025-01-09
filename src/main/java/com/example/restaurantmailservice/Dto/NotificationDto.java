@@ -1,6 +1,7 @@
 package com.example.restaurantmailservice.Dto;
 
 import com.example.restaurantmailservice.domain.NotificationType;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDateTime;
 
@@ -8,6 +9,7 @@ public class NotificationDto {
     private String recipientEmail;
     private String subject;
     private String body;
+
     private NotificationType notificationType;
     private LocalDateTime timestamp;
 
@@ -53,4 +55,5 @@ public class NotificationDto {
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
+
 }

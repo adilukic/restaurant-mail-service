@@ -29,16 +29,18 @@ public class NotificationService {
     @Autowired
     private JavaMailSender mailSender;
 
-    public NotificationDto saveNotification(NotificationDto notificationDto){
+    public NotificationDto saveNotification(NotificationDto notificationDto) {
         Notification notification = notificationMapper.notificationDtoToNotification(notificationDto);
         notification.setTimestamp(LocalDateTime.now());
         notificationRepository.save(notification);
         return notificationMapper.notificationToNotificationDto(notification);
     }
+
     public List<Notification> getArchivedNotifications() {
         return notificationRepository.findByArchived(true);
     }
-    public void sendNotification(String typeName, String recipient, Map<String, String> placeholders){
+
+    public void sendNotification(String typeName, String recipient, Map<String, String> placeholders) {
         NotificationType notificationType = notificationTypeRepository.findByName(typeName)
                 .orElseThrow(() -> new IllegalArgumentException("Notification type not found: " + typeName));
 
@@ -55,14 +57,15 @@ public class NotificationService {
 
         jmsTemplate.convertAndSend("notificationQueue", notification.getId());
     }
-    public void processNotification(Long notificationId) {
-        Notification notification = notificationRepository.findById(notificationId)
-                .orElseThrow(() -> new IllegalArgumentException("Notification not found: " + notificationId));
+
+    public void processNotification(NotificationDto notificationDTO) {
+        Notification notification = notificationRepository.findById(notificationDTO.getNotificationType().getId())
+                .orElseThrow(() -> new IllegalArgumentException("Notification not found: " + notificationDTO.getNotificationType().getId()));
 
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(notification.getRecipient());
-        message.setSubject(notification.getSubject());
-        message.setText(notification.getBody());
+        message.setTo(notificationDTO.getRecipientEmail());
+        message.setSubject(notificationDTO.getSubject());
+        message.setText(notificationDTO.getBody());
 
         mailSender.send(message);
         notification.setStatus("SENT");
