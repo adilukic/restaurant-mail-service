@@ -29,21 +29,21 @@ public class TestDataRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         // Kreiranje i čuvanje NotificationType podataka
-        NotificationType activationEmailType = new NotificationType("ACTIVATION_EMAIL",
-                "Pozdrav %ime%, aktivirajte vaš nalog klikom na sledeći link: %link%",
-                "Aktivacija naloga");
-        NotificationType passwordResetType = new NotificationType("PASSWORD_RESET",
-                "Pozdrav %ime%, kliknite na sledeći link kako biste resetovali šifru: %link%",
-                "Resetovanje šifre");
-        NotificationType reservationCreatedType = new NotificationType("RESERVATION_CREATED",
-                "Pozdrav %ime%, vaša rezervacija za %datum% u %vreme% je uspešno kreirana.",
-                "Uspešna rezervacija");
-        NotificationType reservationCancelledType = new NotificationType("RESERVATION_CANCELLED",
-                "Obaveštenje: Vaša rezervacija za %datum% u %vreme% je otkazana.",
-                "Otkazivanje rezervacije");
-        NotificationType reminderType = new NotificationType("REMINDER",
-                "Podsetnik: Vaša rezervacija za %datum u %vreme% se bliži.",
-                "Podsetnik za rezervaciju");
+        NotificationType activationEmailType = new NotificationType("ACTIVATION_EMAIL", "Aktivacija naloga",
+                "Pozdrav %ime%, aktivirajte vaš nalog klikom na sledeći link: %link%"
+                );
+        NotificationType passwordResetType = new NotificationType("PASSWORD_RESET","Resetovanje šifre",
+                "Pozdrav %ime%, kliknite na sledeći link kako biste resetovali šifru: %link%"
+                );
+        NotificationType reservationCreatedType = new NotificationType("RESERVATION_CREATED", "Uspešna rezervacija",
+                "Pozdrav %ime%, vaša rezervacija za %datum% u %vreme% je uspešno kreirana."
+                );
+        NotificationType reservationCancelledType = new NotificationType("RESERVATION_CANCELLED","Otkazivanje rezervacije",
+                "Obaveštenje: Vaša rezervacija za %datum% u %vreme% je otkazana."
+                );
+        NotificationType reminderType = new NotificationType("REMINDER","Podsetnik za rezervaciju",
+                "Podsetnik: Vaša rezervacija za %datum u %vreme% se bliži."
+                );
 
         notificationTypeRepository.saveAll(Arrays.asList(
                 activationEmailType,
